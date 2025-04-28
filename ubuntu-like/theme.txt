@@ -6,30 +6,74 @@ message-bg-color: "#000000"
 desktop-image: "grub_bg.png"
 terminal-font: "Misc Fixed Regular 13"
 
-# Boot menu with background frame
+# Общие настройки
+message-font: "DejaVu Sans Regular 12"
+title-text: ""
+message-color: "#ccc"
+message-bg-color: "#000000"
+desktop-image: "grub_bg.png"
+terminal-font: "Misc Fixed Regular 13"
+
+# Заголовок в рамке
++ canvas {
+    left = 50%-284      # Центрирование (как у меню)
+    top = 32%
+    width = 568         # Фиксированная ширина блока
+    height = 56         # Фиксированная высота блока
+
+    # Текст заголовка
+    + label {
+        left = 0
+        top = 50%-10
+        width = 100%
+        height = 20
+        align = "center"
+        font = "DejaVu Sans Bold 14"
+        color = "#ed5b00"
+        text = "Please select boot device:"
+    }
+
+    # Рамка
+    + image { file = "frame_nw.png" left = 0 top = 0 }                     # Левый верхний угол (16x16)
+    + image { file = "frame_n.png" left = 16 top = 0 width = 536 height = 16 }  # Верхняя сторона (568-32=536, высота 16)
+    + image { file = "frame_ne.png" left = 552 top = 0 }                   # Правый верхний угол (left = 568-16=552)
+
+    + image { file = "frame_w.png" left = 0 top = 16 width = 16 height = 24 }  # Левая сторона (высота = 56-32=24)
+    + image { file = "frame_e.png" left = 552 top = 16 width = 16 height = 24 }  # Правая сторона
+
+    + image { file = "frame_sw.png" left = 0 top = 40 }                    # Левый нижний угол (top = 56-16=40)
+    + image { file = "frame_s.png" left = 16 top = 40 width = 536 height = 16 }  # Нижняя сторона
+    + image { file = "frame_se.png" left = 552 top = 40 }                  # Правый нижний угол
+
+    + image { file = "frame_c.png" left = 16 top = 16 width = 536 height = 24 }  # Центр (ширина 568-32=536, высота 56-32=24)
+}
+
+# Меню
 + boot_menu {
-    left = 35%
-    width = 30%
-    top = 40%
-    height = 20%
-    item_font = "DejaVu Sans Bold 14"
-    selected_item_font = "DejaVu Sans Bold 14"
-    
+    left = 50%-284    # то же самое центрирование как у заголовка
+    top = 32%+56      # ставим его сразу под заголовком
+    width = 568
+    height = 240      # или сколько тебе нужно (уменьшить в 2 раза если надо)
+
+    item_font = "DejaVu Sans 14"
+    selected_item_font = "DejaVu Sans 14"
+
     icon_width = 24
     item_height = 26
     item_padding = 0
     item_icon_space = 0
     item_spacing = 1
-    
+
     item_color = "#ccc"
     selected_item_color = "#ed5b00"
-    
-    # Frame and selection
+
     menu_pixmap_style = "frame_*.png"
     selected_item_pixmap_style = "selected_blob_*.png"
 }
 
-# Boot timer text (appears above help text)
+
+
+# Boot timer text
 + label {
     id = "__timeout__"
     top = 100%-160
@@ -42,7 +86,7 @@ terminal-font: "Misc Fixed Regular 13"
     text = "Booting in %d seconds..."
 }
 
-# Help texts (instructions)
+# Help texts
 + label {
     top = 100%-80
     left = 20%
@@ -50,7 +94,7 @@ terminal-font: "Misc Fixed Regular 13"
     height = 25
     text = "↑ ↓ Navigate through menu options. Press Enter to boot the selected system."
     align = "center"
-    font = "DejaVu Sans Bold 13"
+    font = "DejaVu Sans 12"
     color = "#575757"
 }
 
@@ -61,8 +105,8 @@ terminal-font: "Misc Fixed Regular 13"
     height = 25
     text = "↑ ↓ Перемещение по опциям меню. Нажмите Enter, чтобы загрузить выбранную систему."
     align = "center"
-    font = "DejaVu Sans Bold 13"
-    color = "#ed5b00"
+    font = "DejaVu Sans 12"
+    color = "#ffffff"
 }
 
 + label {
@@ -72,7 +116,7 @@ terminal-font: "Misc Fixed Regular 13"
     height = 25
     text = "Press E to edit boot parameters before starting. Press Esc to return to the menu."
     align = "center"
-    font = "DejaVu Sans Bold 13"
+    font = "DejaVu Sans 12"
     color = "#575757"
 }
 
@@ -83,7 +127,7 @@ terminal-font: "Misc Fixed Regular 13"
     height = 25
     text = "Нажмите E, чтобы изменить параметры загрузки перед запуском. Нажмите Esc, чтобы вернуться в меню."
     align = "center"
-    font = "DejaVu Sans Bold 13"
-    color = "#ed5b00"
+    font = "DejaVu Sans 12"
+    color = "#ffffff"
 }
 
