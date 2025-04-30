@@ -1,11 +1,3 @@
-# General settings
-message-font: "DejaVu Sans Regular 12"
-title-text: ""
-message-color: "#ccc"
-message-bg-color: "#000000"
-desktop-image: "grub_bg.png"
-terminal-font: "Misc Fixed Regular 13"
-
 # Общие настройки
 message-font: "DejaVu Sans Regular 12"
 title-text: ""
